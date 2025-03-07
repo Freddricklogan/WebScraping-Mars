@@ -1,0 +1,22 @@
+.jumbotron {
+    background-color: #252525;
+    color: white;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#mars-facts {
+    margin-top: 20px;
+}
+
+.thumbnail {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: auto;
+}
