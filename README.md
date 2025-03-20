@@ -1,6 +1,6 @@
 # Mars Data Web Scraper
 
-![Mars Dashboard](images/mars_dashboard.png)
+<img src="images/mars_dashboard.png" alt="Portfolio Overview" width="60%">
 
 ## Overview
 A web application that scrapes various websites for Mars data and displays the information in a single HTML page.
