@@ -1,22 +1,251 @@
+/* 
+ * Mars Dashboard - Custom Styling
+ * Author: Freddrick Logan
+ * 
+ * This CSS file provides custom styling for the Mars Data Dashboard.
+ * It includes responsive design elements, custom color schemes,
+ * and visual enhancements to improve the user experience.
+ */
+
+/* ---- Base Styling ---- */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    padding-bottom: 60px; /* Space for footer */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+}
+
+/* ---- Jumbotron Styling ---- */
 .jumbotron {
-    background-color: #252525;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                      url('/static/img/mars-background.jpg');
+    background-size: cover;
+    background-position: center;
     color: white;
-    padding: 20px;
-    margin-top: 20px;
+    border-radius: 0;
+    margin-bottom: 30px;
+    padding: 6rem 2rem;
+    position: relative;
 }
 
-#mars-facts {
-    margin-top: 20px;
+.jumbotron h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
 }
 
-.thumbnail {
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 4px;
+.jumbotron .lead {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
 }
 
-.thumbnail img {
+/* ---- Card Styling ---- */
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    font-weight: bold;
+    border-bottom: none;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* ---- Mars News Section ---- */
+.card h3 {
+    color: #c1440e; /* Mars-like orange/red */
+    margin-bottom: 15px;
+}
+
+/* ---- Featured Image Styling ---- */
+.img-fluid {
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ---- Facts Table Styling ---- */
+.table {
+    font-size: 0.9rem;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(193, 68, 14, 0.1); /* Slight Mars-colored striping */
+}
+
+.table th {
+    background-color: #343a40;
+    color: white;
+}
+
+/* ---- Hemisphere Cards Styling ---- */
+.hemisphere-card {
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.hemisphere-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hemisphere-card img {
+    height: 200px;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.hemisphere-card:hover img {
+    transform: scale(1.1);
+}
+
+.hemisphere-card .card-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* ---- Button Styling ---- */
+.btn-danger {
+    background-color: #c1440e; /* Mars-like color */
+    border-color: #a33a0c;
+}
+
+.btn-danger:hover {
+    background-color: #a33a0c;
+    border-color: #852f0a;
+}
+
+.btn-outline-primary {
+    color: #4e73df;
+    border-color: #4e73df;
+}
+
+.btn-outline-primary:hover {
+    background-color: #4e73df;
+    border-color: #4e73df;
+}
+
+/* ---- Footer Styling ---- */
+.footer {
+    position: relative;
+    bottom: 0;
     width: 100%;
-    height: auto;
+    height: 60px;
+    line-height: 60px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+}
+
+/* ---- Animation Effects ---- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.row {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* ---- Responsive Design Adjustments ---- */
+@media (max-width: 768px) {
+    .jumbotron {
+        padding: 4rem 1rem;
+    }
+    
+    .jumbotron h1 {
+        font-size: 2.5rem;
+    }
+    
+    .jumbotron .lead {
+        font-size: 1.2rem;
+    }
+    
+    .card-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .hemisphere-card img {
+        height: 150px;
+    }
+}
+
+@media (max-width: 576px) {
+    .jumbotron h1 {
+        font-size: 2rem;
+    }
+    
+    .jumbotron .btn-lg {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+    
+    .hemisphere-card {
+        margin-bottom: 1.5rem;
+    }
+    
+    .table {
+        font-size: 0.8rem;
+    }
+}
+
+/* ---- Loading Indicators ---- */
+.loading-indicator {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ---- Accessibility Enhancements ---- */
+.visually-hidden {
+    position: absolute !important;
+    height: 1px; 
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
+
+/* ---- Print Styling ---- */
+@media print {
+    .jumbotron {
+        background-image: none !important;
+        color: black !important;
+    }
+    
+    .btn, .card-img-top {
+        display: none !important;
+    }
+    
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+    }
+    
+    .footer {
+        position: fixed;
+        bottom: 0;
+    }
 }
