@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Mars News &amp; Weather — scraped on a schedule, published as a page</title>
+<meta name="description" content="Mars dashboard fed by a scheduled scraper with tested parsers and a committed snapshot fallback: news headlines and Curiosity REMS weather by Martian month, extremes, and a measured Martian year. By Freddrick Logan.">
+<meta name="author" content="Freddrick Logan">
+<link rel="canonical" href="$pages">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b1220'/%3E%3Ccircle cx='16' cy='16' r='9' fill='%23f85149' fill-opacity='.85'/%3E%3Ccircle cx='12' cy='13' r='2' fill='%230b1220' fill-opacity='.35'/%3E%3Ccircle cx='19' cy='19' r='3' fill='%230b1220' fill-opacity='.35'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap">
+<link rel="stylesheet" href="src/exec-shell.css">
+<link rel="stylesheet" href="src/report.css">
+<script type="application/json" id="report-data">$report_json</script>
+</head>
+<body>
+<main id="demo-root" class="exec-main">
+  <h2 class="sr-only">Mars dashboard</h2>
+  <p class="md-note"><strong>Data:</strong> $provenance, fetched $fetched. Sources: <a href="$news_url">news</a> and <a href="$weather_url">weather</a> — the static mirrors the exercise uses, because the original sites no longer resolve. $n_articles articles; $n_obs weather observations from $first to $last. Every figure was computed by <code>marsdash report</code> in the CI run that published this page; <a href="snapshot.json">snapshot.json</a> is the data it used.</p>
+
+  <section class="md-panel" id="s-weather" aria-labelledby="h-weather">
+    <h3 id="h-weather">1. Curiosity REMS weather by Martian month</h3>
+    <p class="md-lead">Mean daily minimum temperature is lowest in month <strong>$coldest</strong> ($coldest_t °C) and highest in month <strong>$warmest</strong> ($warmest_t °C). Mean pressure is lowest in month <strong>$low_p</strong> ($low_p_v Pa) and highest in month <strong>$high_p</strong> ($high_p_v Pa). The spacing of successive Ls = 0 crossings in the terrestrial dates gives a Martian year of <strong>$year Earth days</strong> (accepted value 686.98).</p>
+    <div class="md-grid">
+      <div><h4>Mean minimum temperature (°C)</h4>$temp_chart</div>
+      <div><h4>Mean pressure (Pa)</h4>$pressure_chart</div>
+    </div>
+    <div class="md-scroll">$month_table</div>
+  </section>
+
+  <section class="md-panel" id="s-news" aria-labelledby="h-news">
+    <h3 id="h-news">2. Latest Mars news on the source page</h3>
+    $news
+  </section>
+</main>
+<script type="module" src="src/report.js"></script>
+</body>
+</html>
