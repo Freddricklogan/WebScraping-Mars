@@ -1,0 +1,30 @@
+# Weekly scrape: refreshes data/snapshot.json on main when the sources changed. The push then runs
+# the normal CI/CD workflow, which rebuilds and republishes the dashboard.
+name: Refresh snapshot
+
+on:
+  schedule:
+    - cron: '0 5 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+      - run: uv venv --clear && uv pip install -e .
+      - run: uv run marsdash scrape --out data/snapshot.json
+      - name: Commit if changed
+        run: |
+          git config user.name "Freddrick Logan"
+          git config user.email "490047+Freddricklogan@users.noreply.github.com"
+          if git diff --quiet -- data/snapshot.json; then echo "snapshot unchanged"; exit 0; fi
+          git add data/snapshot.json
+          git commit -m "data: refresh Mars snapshot $(date -u +%Y-%m-%d)"
+          git push
