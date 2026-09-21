@@ -1,7 +1,6 @@
 # WebScraping-Mars: the scraping exercise as a scheduled pipeline — tested parsers, a committed snapshot, a page that says where its numbers came from
 
 [![CI/CD](https://github.com/Freddricklogan/WebScraping-Mars/actions/workflows/deploy.yml/badge.svg)](https://github.com/Freddricklogan/WebScraping-Mars/actions/workflows/deploy.yml)
-[![Refresh](https://github.com/Freddricklogan/WebScraping-Mars/actions/workflows/refresh.yml/badge.svg)](https://github.com/Freddricklogan/WebScraping-Mars/actions/workflows/refresh.yml)
 [![Coverage](https://img.shields.io/badge/coverage-99%25-brightgreen)](#5-getting-started--verification)
 [![Security (CodeQL)](https://github.com/Freddricklogan/WebScraping-Mars/actions/workflows/codeql.yml/badge.svg)](https://github.com/Freddricklogan/WebScraping-Mars/actions/workflows/codeql.yml)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
@@ -122,7 +121,7 @@ uv run marsdash report --out dist --live    # live scrape with snapshot fallback
 | Coverage | **99%** statements over `marsdash` (CLI excluded) |
 | ruff, ruff format, mypy --strict | clean |
 | bandit, pip-audit | 0 findings; no known vulnerabilities |
-| Snapshot | 15 articles; 1,867 REMS observations from 2012-08-16 to 2018-02-27 (276 KB) |
+| Snapshot (refreshed weekly by the [Refresh workflow](https://github.com/Freddricklogan/WebScraping-Mars/actions/workflows/refresh.yml)) | 15 articles; 1,867 REMS observations from 2012-08-16 to 2018-02-27 (276 KB) |
 | Weather | coldest month 3 (−83.3 °C), warmest 8; lowest pressure month 6, highest 9; Martian year 687.0 days (accepted 686.98) |
 | Dashboard smoke (headless Chrome) | **0 console errors**; 24 bars, 15 news items, 1 table, 3 tour steps; no horizontal scroll at 1280 or 400 px |
 
