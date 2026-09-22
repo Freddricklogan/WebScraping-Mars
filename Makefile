@@ -1,6 +1,8 @@
 .PHONY: check lint typecheck test build security scrape
 check: lint typecheck test security build
-lint:
+lint: contrast
+contrast:
+	python3 src/marsdash/shell/contrast_check.py src/marsdash/shell/exec-shell.css
 	uv run ruff check . && uv run ruff format --check .
 typecheck:
 	uv run mypy

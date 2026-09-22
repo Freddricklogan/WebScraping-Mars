@@ -4,6 +4,7 @@ import { mountExecShell } from './exec-shell.js';
 const data = JSON.parse(document.getElementById('report-data').textContent);
 
 const shell = mountExecShell({
+  theme: 'signal',
   title: 'Mars News & Weather',
   tagline: 'The web-scraping exercise rebuilt as a scheduled pipeline: tested parsers over two static sources, a snapshot JSON the scraper commits, and a dashboard generated from it — Curiosity REMS weather by Martian month, the coldest and warmest months, pressure extremes, and a Martian year measured from the data. No database, no server.',
   repo: 'https://github.com/Freddricklogan/WebScraping-Mars',
